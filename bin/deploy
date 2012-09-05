@@ -1,0 +1,33 @@
+#!/bin/bash
+
+echo "Not yet" && exit 1
+
+DEPLOY_DIR="./deploy"
+DEPLOY_REPO='nuclearsandwich/nuclearsandwich.github.com'
+DEPLOY_BRANCH='master'
+
+if [ ! -d $DEPLOY_DIR ]; then
+	echo '   ** Pulling deploy repository'
+	git clone "https://github.com/$DEPLOY_REPO.git" $DEPLOY_DIR
+fi
+
+
+export 
+
+cd $DEPLOY_DIR
+echo '   ** Checking out deploy branch'
+git fetch $DEPLOY_BRANCH || git branch $DEPLOY_BRANCH
+git checkout $DEPLOY_BRANCH
+rm -rf bin
+
+echo '   ** Running local build'
+cd ..
+DESTDIR=$DEPLOY_DIR NODRAFTS=true bin/build || exit 1
+
+echo '   ** Pushing to deploy destination'
+cd $DEPLOY_DIR
+git add -A
+git commit -m"Updated `date`."
+git push origin $DEPLOY_BRANCH
+
+cd ..

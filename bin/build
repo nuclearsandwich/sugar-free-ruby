@@ -1,0 +1,88 @@
+#!/usr/bin/env ruby
+require "mustache"
+require "fileutils"
+require_relative "../lib/blogdown"
+require_relative "../lib/post_repository"
+require_relative "../lib/post"
+
+root = File.expand_path "../..", __FILE__
+src = File.join root, "src"
+templates = File.join src, "templates"
+pages = File.join src, "pages"
+
+pub = if ENV['DESTDIR']
+        puts ENV['DESTDIR']
+        File.join root, ENV['DESTDIR']
+      else
+        File.join root, "pub"
+      end
+
+posts = File.join src, "posts"
+
+if File.exists? pub
+  pubdir = Dir.new pub
+  pubdir.each do |file|
+    FileUtils.rm_r File.join(pubdir.path, file) unless [".", "..", ".git"].include? file
+  end
+else
+  Dir.mkdir pub
+end
+
+
+CONTEXT = {}
+
+File.write File.join(pub, "CNAME"), "nuclearsandwich.com"
+
+%w[ fonts images stylesheets ].each do |f|
+  FileUtils.cp_r File.join(src, f), File.join(pub, f)
+end
+
+File.write File.join(pub, "stylesheets", "pygments.css"), Pygments.css(:style => 'monokai')
+
+links = {
+  "Home"     => "/",
+  "About"    => "/about.html",
+  "Blog"     => "/blog",
+  "GitHub"   => "https://github.com/nuclearsandwich",
+  "Twerters" => "https://twitter.com/nuclearsandwich",
+  "Cage"     => "/cage"
+}
+
+nav = "<nav>\n  <ul>\n"
+links.each { |name, href| nav << %Q(    <li><a href="#{href}">#{name}</a></li>\n) }
+nav << "  </ul>\n</nav>"
+
+CONTEXT[:navigation] = nav
+
+index = Mustache.new
+index.template_path = templates
+index.template = File.read File.join(templates, "index.mustache")
+
+Dir.new(pages).each do |page|
+  next unless page =~ /\.md$/
+  html_filename = "#{page.split('.').first}.html"
+  if page == "index.md"
+    CONTEXT[:title] = "Nuclearsandwich!" 
+  else
+    CONTEXT[:title] = page.split('.').first.capitalize
+  end
+  CONTEXT[:content] = Blogdown.parser.render File.read(File.join(pages, page))
+  output = index.render CONTEXT
+  File.write File.join(pub, html_filename), output
+end
+
+post_repo = PostRepository.new posts, ENV['NODRAFTS']
+
+blog_dir = File.join(pub, "blog")
+FileUtils.mkdir blog_dir
+post_repo.each do |post|
+  CONTEXT[:title] = post.title
+  CONTEXT[:content] = post.html_content
+  File.write File.join(blog_dir, post.html_filename), index.render(CONTEXT)
+end
+
+
+CONTEXT[:title] = "Latest Blog Articles"
+CONTEXT[:content] = post_repo.index_content
+File.write File.join(blog_dir, "index.html"), index.render(CONTEXT)
+

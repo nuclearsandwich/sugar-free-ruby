@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rerun -p "{src,lib}/**/*" bin/build

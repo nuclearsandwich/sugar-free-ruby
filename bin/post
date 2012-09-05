@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+require "yaml"
+
+t = Time.now
+t -= t.subsec
+t -= t.sec
+title = ARGV.join(" ")
+
+metadata = {
+  "layout"     => "post",
+  "title"      => title,
+  "date"       => t,
+  "published"  => false,
+  "categories" => []
+}
+
+filename = File.join "src", "posts",
+  "#{t.strftime("%Y-%m-%d")}-#{title.downcase.gsub(/[^A-Za-z0-9]+/, '-')}.md"
+
+frontmatter = YAML.dump metadata
+frontmatter << "---\n"
+
+File.write filename, frontmatter
+
+exec "#{ENV['EDITOR']} #{filename}"
