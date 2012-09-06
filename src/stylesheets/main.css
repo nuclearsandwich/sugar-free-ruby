@@ -9,7 +9,7 @@
 body {
 	background: url('/images/px_by_Gre3g.png') repeat #2e2e2e;
 	font-size: 22px;
-	font-family: 'Neutraface 2 Text';
+	font-family: 'Neutra2 Text';
 	color: #2e2e2e;
 }
 
@@ -18,7 +18,8 @@ ul, ul li {
 }
 
 h1,h2,h3,h4,h5,h6 {
-	font-family: 'Museo Sans', sans-serif;
+	font-family: 'MuseoSans';
+	font-weight: 900;
 }
 
 li {
