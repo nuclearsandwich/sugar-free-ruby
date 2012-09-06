@@ -1,7 +1,6 @@
 ---
 rank: 1000
-x: 2000
-y: 0
+classes: thirty-wide
 ---
 
 ```ruby
@@ -14,6 +13,7 @@ class Hidere
     end
   end
 end
+                            30        40       50         60        70        80
 
 Hidere.new
 ```
