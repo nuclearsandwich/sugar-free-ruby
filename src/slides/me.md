@@ -1,6 +1,6 @@
 ---
 rank: 100
-classes: centered fifty-width
+classes: centered fifty-wide large-text
 ---
 
 ## Who is this guy?
