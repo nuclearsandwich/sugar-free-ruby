@@ -1,24 +1,61 @@
+/* Pallete
+ * c1c1c1: light grey
+ * background-color: #ffefdc; cream
+ *
+ *
+ *
+ */
 body {
 	background: url('/images/px_by_Gre3g.png') repeat black;
-	font-family: 'Bitter Regular', serif;
+	font-size: 50px;
+	font-family: 'Neutraface 2 Text';
+	color: #2e2e2e;
 }
 
-header.page, nav, footer {
-	width: 80%;
+h1,h2,h3,h4,h5,h6 {
+	font-family: 'Museo Sans', sans-serif;
+}
+
+li {
+	list-decoration: square;
+}
+
+div.slide {
 	margin: 0 auto;
+	width: 800px;
+	height: 600px;
+	background-color: #ffefdc;
+	padding: 50px;
 }
 
-header.page {
-	background-color: #47092E;
-	color: #c1c1c1;
-	font-family: 'Sansumi Bold', sans-serif;
-	font-size: 120%;
-	padding: 2.5em 1em;
+.hundred-pix {
+	margin-top: 100px;
+	content: ' ';
 }
 
-header h2 {
+.fifty-pix {
+	margin-top: 50px;
+	content: ' ';
+}
+
+
+.centered {
+	text-align: center;
+	margin: auto;
+}
+
+.textual {
+	line-height: 80px;
+}
+
+h1 {
+	font-size: 128px;
+	color: #2e2e2e;
+}
+
+h2 {
+	font-size: 64px;
 	color: #6a6a6a;
-	font-size: 110%;
 }
 
 a {
@@ -35,30 +72,6 @@ a:visited {
 	color: #6a6a6a;
 }
 
-nav {
-	text-align: center;
-}
-
-nav ul {
-	margin: 0;
-	list-style: none;
-}
-
-nav a {
-	color: black;
-	text-decoration: none;
-}
-
-nav ul li {
-	margin: 0 10px;
-	padding: 0 3em;
-	float: left;
-	background-color: white;
-	border-bottom: 1px solid #c1c1c1;
-	border-right: 1px solid #c1c1c1;
-}
-
-
 div.content {
 	margin: auto;
 	background-color: #dedede;
@@ -67,33 +80,24 @@ div.content {
 	width: 55%;
 }
 
-p.copyright {
-	color: #c1c1c1;
-}
-
-p.copyright a {
-	color: #c1c1c1;
-}
-
-
-pre {
-	background-color: #181818;
+.slide {
+	margin-top: 100px;
+	background-color: white;
 	padding: 30px;
 	border: 3px #6a6a6a solid;
 	border-radius: 30px;
+}
+
+pre {
+	margin-top: 50px;
+	text-align: left;
+	padding: 30px;
+	background-color: rgba(100,100,100,0.1);
 	font-family: 'Anonymous Regular', monospace;
-	font-size: 90%;
+	font-size: 20px;
+	border-radius: 30px;
 }
 
-div.article-link h1 {
-	font-size: 120%;
+.fifty-width pre {
+	font-size: 22px;
 }
-
-div.article-link h2 {
-	font-size: 100%;
-}
-
-div.article-link {
-	margin-top: 30px;
-	border-bottom: solid 2px #c1c1c1;
-	border-right: solid 2px #c1c1c1;
