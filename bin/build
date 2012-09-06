@@ -31,13 +31,11 @@ end
 
 CONTEXT = {}
 
-File.write File.join(pub, "CNAME"), "nuclearsandwich.com"
-
 %w[ fonts images stylesheets javascripts ].each do |f|
   FileUtils.cp_r File.join(src, f), File.join(pub, f)
 end
 
-style = 'solarizedl'
+style = 'github'
 
 if style == 'github'
   FileUtils.cp File.join(src, "stylesheets", "github.css"), File.join(pub, "stylesheets", "pygments.css")
