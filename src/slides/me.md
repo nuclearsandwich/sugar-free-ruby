@@ -1,9 +1,9 @@
 ---
 rank: 100
-classes: centered bigcode
+classes: centered fifty-width
 ---
 
-## Who's this guy?
+## Who is this guy?
 
 Steven! Ragnarök
 
@@ -15,8 +15,6 @@ contact = {
   "Email"    => "steven@nuclearsandwich.com",
   "Twitter"  =>       "@nuclearsandwich"
 }
-
-                                               50         60        70        80
 ```
 
 "That guy with all the opinions"
