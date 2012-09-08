@@ -1,9 +1,8 @@
-\documentclass[14pt,final]{beamer}
-\usepackage{minted}
+\documentclass[20pt,draft]{beamer}
 \usetheme{sugarfree}
 
 
-% \author{Steven! Ragnarök}
+\author{Steven! Ragnarök}
 \title{Sugar-Free Ruby}
 \subtitle{A Look at Object-First Teaching}
 \date{}
@@ -13,19 +12,47 @@
 	\titlepage
 \end{frame}
 
-% 	\begin{frame}
-% 		Hello, World!
-% 		\pause
-% 		Nice kicks.
-% 	\end{frame}
-
 \begin{frame}[fragile]
-\begin{minted}[linenos,mathescape]{ruby}
-  class Ruby
-    def hello!
-      puts "hello, world!"
-    end
-  end
-\end{minted}
+	\begin{center}
+		{\usebeamercolor[fg]{subtitle}\usebeamerfont{subtitle}
+			Who is this guy?
+		}
+
+		\vspace{1cm}
+
+			\insertauthor
+
+	\end{center}
+
+\begin{ruby10pt}
+contact = {
+  "GitHub"   =>        "nuclearsandwich",
+  "Freenode" =>        "nuclearsandwich",
+  "WWW"      =>    "www.nuclearsandwich.com",
+  "Email"    => "steven@nuclearsandwich.com",
+  "Twitter"  =>       "@nuclearsandwich"
+}
+\end{ruby10pt}
 \end{frame}
+
+\begin{section}{Test Slides}
+\begin{frame}[fragile]
+\begin{rubycode}
+class Ruby
+  def hello!
+    puts "hello, world!"
+  end
+end
+\end{rubycode}
+\end{frame}
+
+\begin{frame}
+	\begin{itemize}
+		\item Foo
+		\item Bar
+		\item Baz
+	\end{itemize}
+\end{frame}
+\end{section}
+
 \end{document}

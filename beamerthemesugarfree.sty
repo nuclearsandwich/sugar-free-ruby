@@ -1,6 +1,7 @@
 \usetheme{default}
 \usepackage{color}
 \usepackage{fontspec,metalogo,realscripts}
+\usepackage{minted}
 \useoutertheme{default}
 \useinnertheme{default}
 
@@ -19,10 +20,9 @@
 
 \setbeamerfont{title}{size=\fontsize{48pt}{58pt},series=\bfseries,family=\rmfamily}
 \setbeamercolor{title}{fg=basicallyblack,bg=}
+
 \setbeamerfont{subtitle}{size=\fontsize{26pt}{48pt},series=\bfseries,family=\rmfamily}
 \setbeamercolor{subtitle}{fg=darkgrey,bg=}
-
-% \setbeamercolor{structure}{fg=lightgrey}
 
 \setbeamertemplate{title page}{%
 	\vspace{1.5cm}
@@ -36,11 +36,12 @@
 	\insertsubtitle
 }
 
-\setbeamertemplate{frametitle}{%
-\inserttitle}
-
 \setbeamercolor{normal text}{bg=cream1970s, fg=basicallyblack}
 
 \setbeamercolor{background canvas}{bg=cream1970s}
 
 \setbeamertemplate{navigation symbols}{} %no nav symbols
+
+\usemintedstyle{github}
+\newminted{ruby}{fontsize=\fontsize{14pt}{18pt},bgcolor=base16white,tabsize=2}
+\newminted[ruby10pt]{ruby}{bgcolor=base16white,tabsize=2,fontsize=\fontsize{10pt}{12pt}}
