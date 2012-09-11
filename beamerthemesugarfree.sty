@@ -1,13 +1,13 @@
-\usetheme{default}
 \usepackage{color}
 \usepackage{fontspec,metalogo,realscripts}
 \usepackage{minted}
 \useoutertheme{default}
-\useinnertheme{default}
+\useinnertheme{circles}
 
 % Use Museo for headers even thought it isn't Roman
 \setmainfont{Museo Sans 900}
-\setsansfont{Neutraface 2 Text}
+% \setsansfont{Neutraface 2 Text}
+\setsansfont{Museo Sans 100}
 \setmonofont{Anonymous}
 
 %% Define my color palette 
@@ -17,12 +17,17 @@
 \definecolor{dirtywhite}{HTML}{DEDEDE}
 \definecolor{cream1970s}{HTML}{FFEFDC}
 \definecolor{base16white}{HTML}{F5F5F5}
+\definecolor{nuclearplum}{HTML}{47092E}
 
 \setbeamerfont{title}{size=\fontsize{48pt}{58pt},series=\bfseries,family=\rmfamily}
 \setbeamercolor{title}{fg=basicallyblack,bg=}
+\setbeamerfont{title}{size=\fontsize{48pt}{58pt},series=\bfseries,family=\rmfamily}
 
 \setbeamerfont{subtitle}{size=\fontsize{26pt}{48pt},series=\bfseries,family=\rmfamily}
 \setbeamercolor{subtitle}{fg=darkgrey,bg=}
+
+\setbeamerfont{frametitle}{parent=subtitle}
+\setbeamercolor{frametitle}{parent=title}
 
 \setbeamertemplate{title page}{%
 	\vspace{1.5cm}
@@ -36,12 +41,15 @@
 	\insertsubtitle
 }
 
-\setbeamercolor{normal text}{bg=cream1970s, fg=basicallyblack}
+\setbeamercolor{normal text}{bg=, fg=basicallyblack}
+\setbeamercolor{local structure}{fg=nuclearplum}
 
-\setbeamercolor{background canvas}{bg=cream1970s}
+\setbeamercolor{background}{bg=cream1970s}
+\setbeamercolor{section in head/foot}{bg=cream1970s}
 
 \setbeamertemplate{navigation symbols}{} %no nav symbols
 
 \usemintedstyle{github}
 \newminted{ruby}{fontsize=\fontsize{14pt}{18pt},bgcolor=base16white,tabsize=2,framesep=5mm,frame=single,rulecolor=\color{lightgrey}}
 \newminted[ruby10pt]{ruby}{bgcolor=base16white,tabsize=2,fontsize=\fontsize{10pt}{12pt},framesep=1mm,frame=single,rulecolor=\color{lightgrey}}
+\newmint{ruby}{fontsize=\fontsize{14pt}{20pt}}
