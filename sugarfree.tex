@@ -1,0 +1,124 @@
+\documentclass[20pt]{beamer}
+\usetheme{sugarfree}
+\usepackage{graphicx}
+
+\author{Steven! Ragnarök}
+\title{Sugar-Free Ruby}
+\subtitle{A Look at Object-First Teaching}
+
+\begin{document}
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\begin{frame}[fragile]
+	\begin{center}
+		{\usebeamercolor[fg]{subtitle}\usebeamerfont{subtitle}Who is this guy?}
+		\vspace{1cm}
+
+		\insertauthor
+	\end{center}
+	\begin{ruby10pt}
+contact = {
+  "GitHub"   =>        "nuclearsandwich",
+  "Freenode" =>        "nuclearsandwich",
+  "WWW"      =>    "www.nuclearsandwich.com",
+  "Email"    => "steven@nuclearsandwich.com",
+  "Twitter"  =>       "@nuclearsandwich"
+}
+	\end{ruby10pt}
+
+	\begin{center}
+		''That guy with all the opinions''
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\par {\usebeamercolor[fg]{title}\usebeamerfont{title} Teaching Ruby}
+\end{frame}
+
+\begin{frame}
+\begin{center}
+	\frametitle{Disclaimer}
+	\includegraphics[width=5cm]{gorilla}
+\end{center}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{The (Good?) Old Fashioned Way}
+	\begin{enumerate}
+		\item variable assignment
+		\item variable access
+		\item \ruby|puts foo|
+		\item conditionals
+		\item loops
+		\item \ruby|'hello'.upcase|
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{What's wrong with this picture?}
+
+	\only<1>{Five whole concepts come before methods.}
+	\only<2>{No mention whatsoever of classes.}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Why do you want to learn Ruby?}
+
+	\begin{itemize}
+		\item I hate my job and hear programmers make bank
+		\item I know how to program but not Ruby
+		\item I'm curious about programming
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\par {\usebeamerfont{subtitle}Ruby is not a computer language.}
+	\vspace{4cm}\pause
+	\par {\usebeamerfont{subtitle}So why are we teaching it like one?}
+\end{frame}
+
+\begin{frame}
+	\par{\usebeamercolor[fg]{title}\usebeamerfont{title} Teaching Objects}
+	\par\vspace{3cm}
+	\pause {\usebeamerfont{subtitle}Ruby is your computer now}
+\end{frame}
+
+\begin{frame}[fragile]
+	\begin{rubycode}
+pen = Object.new
+#=> #<Object:0x007ff1c491de90>
+
+def pen.inspect
+'A trusty pen'
+end
+#=> nil
+
+pen
+#=> A trusty pen
+	\end{rubycode}
+\end{frame}
+
+\begin{frame}
+\end{frame}
+
+
+\begin{frame}
+	\begin{center}
+		\vspace{2.5cm}
+		{\usebeamercolor[fg]{title}\usebeamerfont{title}Thanks!}
+		\vspace{1.5cm}
+
+		Behind the Scenes
+		\par\rule[3mm]{3cm}{0.1mm}
+
+		\XeLaTeX / Beamer
+
+		Pygments / Minted
+	\end{center}
+\end{frame}
+
+\end{document}
