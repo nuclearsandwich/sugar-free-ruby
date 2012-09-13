@@ -66,15 +66,13 @@ contact = {
 \end{frame}
 
 \begin{frame}
-	\frametitle{What's wrong with this picture?}
-
-	\only<1>{Five whole concepts come before methods.}
-	\only<2>{No mention whatsoever of classes.}
+	\par {\usebeamercolor[fg]{title}\usebeamerfont{title} Teaching Ruby}\par
+	\vspace{3cm}\hfill
+	{\usebeamerfont{subtitle}The challenge \\*}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Why do you want to learn Ruby?}
-
 	\begin{itemize}
 		\item I hate my job and hear programmers make bank
 		\item I know how to program but not Ruby
@@ -82,6 +80,143 @@ contact = {
 	\end{itemize}
 \end{frame}
 
+\begin{frame}
+	\frametitle{Disclaimer}
+	\centering \includegraphics[width=4cm]{gorilla}\par
+  {\usebeamerfont{subtitle} Haters, the doors are stage left }
+\end{frame}
+
+\section{The (Good?) Old Fashioned Way}
+\begin{frame}
+	\par {\usebeamercolor[fg]{title}\usebeamerfont{title} Teaching Ruby}\par
+	\vspace{3cm}\hfill
+	{\usebeamerfont{subtitle}The (Good?) Old\\* \hfill Fashioned Way}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Data Types: Numbers}
+\begin{rubycode}
+5 + 5 #=> 10
+
+9 / 2 #=> 4
+
+9.0 / 2 #=> 4.5
+\end{rubycode}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Data Types: Strings and Symbols}
+\begin{rubycode}
+'Hello' #=> "Hello"
+
+:what?  #=> :what?
+
+"Hello, " + "World!"
+#=> "Hello, World!"
+\end{rubycode}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Data Types: Boolean Values}
+\begin{rubycode}
+true #=> true
+false #=> false
+
+20 < 100 #=> true
+
+true and false #=> false
+
+true or false #=> true
+\end{rubycode}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Data Types: Arrays and Hashes}
+\begin{rubycode}
+[ 1, 2, 3.0, "four" ]
+
+{ :name => "Steven!",
+:age => 24,
+:species => "human" }
+\end{rubycode}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Variable Assignment}
+\begin{rubycode}
+my_name = "Steven!"
+my_age = 24
+\end{rubycode}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Variable Access}
+\begin{rubycode}
+# ten years from now
+my_age + 10
+
+# I hashify myself
+{ :name => my_name,
+  :age => my_age }
+\end{rubycode}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Console Output}
+\begin{rubycode}
+puts my_name
+Steven!
+#=> nil
+puts my_age + 10
+34
+#=> nil
+\end{rubycode}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Conditionals}
+\begin{rubycode}
+if my_name == "Steven!"
+  puts "Hello!"
+else
+  puts "Who are you?"
+end
+Hello!
+#=> nil
+\end{rubycode}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Loops}
+\begin{rubycode}
+while my_age < 30
+  puts "Enjoying my twenties"
+  my_age = my_age + 1
+end
+\end{rubycode}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Methods}
+\begin{rubycode}
+"foo".upcase #=> "FOO"
+\end{rubycode}
+\end{frame}
+
+\begin{frame}
+	\par {\usebeamercolor[fg]{title}\usebeamerfont{title} Teaching Ruby}\par
+	\vspace{3cm}\hfill
+	{\usebeamerfont{subtitle}What's wrong with\\* \hfill this picture?}
+\end{frame}
+
+\begin{frame}
+	\frametitle{What's wrong with this picture?}
+	{\usebeamerfont{subtitle}
+		\only<1>{Six whole concepts come before methods.}
+		\only<2>{No mention whatsoever of classes.}
+		\only<3>{Why do we cling to this?}
+	}
+\end{frame}
 
 \begin{frame}
 	\par {\usebeamerfont{subtitle}Ruby is not a computer language.}
