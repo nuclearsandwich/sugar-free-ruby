@@ -5,9 +5,13 @@
 \useinnertheme{circles}
 
 % Use Museo for headers even thought it isn't Roman
-\setmainfont{Museo Sans 900}
+\newfontfamily\museothicker{Museo Sans 900}
+\newfontfamily\museothick{Museo Sans 700}
+\newfontfamily\museonormal{Museo Sans 100}
+\setmainfont{Museo Sans 700}
+
 % \setsansfont{Neutraface 2 Text}
-\setsansfont{Museo Sans 100}
+\setsansfont{Museo Sans 700}
 \setmonofont{Anonymous}
 
 %% Define my color palette 
@@ -23,7 +27,7 @@
 \setbeamercolor{title}{fg=basicallyblack,bg=}
 \setbeamerfont{title}{size=\fontsize{48pt}{58pt},series=\bfseries,family=\rmfamily}
 
-\setbeamerfont{subtitle}{size=\fontsize{26pt}{48pt},series=\bfseries,family=\rmfamily}
+\setbeamerfont{subtitle}{size=\fontsize{26pt}{48pt},series=\bfseries,family=\fontspec{Museo Sans 900}}
 \setbeamercolor{subtitle}{fg=darkgrey,bg=}
 
 \setbeamerfont{frametitle}{parent=subtitle}
@@ -46,8 +50,8 @@
 \setbeamercolor{normal text}{bg=, fg=basicallyblack}
 \setbeamercolor{local structure}{fg=nuclearplum}
 
-\setbeamercolor{background canvas}{bg=cream1970s}
-\setbeamercolor{section in head/foot}{bg=cream1970s}
+% Should be cream1970s but projectors.
+\setbeamercolor{background canvas}{bg=base16white}
 
 \setbeamertemplate{navigation symbols}{} %no nav symbols
 
