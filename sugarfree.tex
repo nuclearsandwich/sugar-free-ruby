@@ -83,7 +83,10 @@ contact = {
 \begin{frame}
 	\frametitle{Disclaimer}
 	\centering \includegraphics[width=4cm]{gorilla}\par
-  {\usebeamerfont{subtitle} Haters, the doors are stage left }
+{\usebeamerfont{subtitle}
+\only<1>{\hfill This point onward:\\*\hfill Open minds only}
+\only<2>{Haters, \hfill the doors are\\*\hfill stage left}
+}
 \end{frame}
 
 \section{The (Good?) Old Fashioned Way}
@@ -153,11 +156,13 @@ my_age = 24
 \frametitle{Variable Access}
 \begin{rubycode}
 # ten years from now
-my_age + 10
+my_age + 10 #=> 34
 
 # I hashify myself
 { :name => my_name,
   :age => my_age }
+#=> {:name => "Steven!",
+#    :age => 24}
 \end{rubycode}
 \end{frame}
 
@@ -190,8 +195,8 @@ Hello!
 \frametitle{Loops}
 \begin{rubycode}
 while my_age < 30
-  puts "Enjoying my twenties"
-  my_age = my_age + 1
+puts "Enjoying my twenties"
+my_age = my_age + 1
 end
 \end{rubycode}
 \end{frame}
@@ -204,15 +209,15 @@ end
 \end{frame}
 
 \begin{frame}
-	\par {\usebeamercolor[fg]{title}\usebeamerfont{title} Teaching Ruby}\par
-	\vspace{3cm}\hfill
-	{\usebeamerfont{subtitle}What's wrong with\\* \hfill this picture?}
+\par {\usebeamercolor[fg]{title}\usebeamerfont{title} Teaching Ruby}\par
+\vspace{3cm}\hfill
+{\usebeamerfont{subtitle}What's wrong with\\* \hfill this picture?}
 \end{frame}
 
 \begin{frame}
-	\frametitle{What's wrong with this picture?}
-	{\usebeamerfont{subtitle}
-		\only<1>{Six whole concepts come before methods.}
+\frametitle{What's wrong with this picture?}
+{\usebeamerfont{subtitle}
+	\only<1>{Six whole concepts come before methods.}
 		\only<2>{No mention whatsoever of classes.}
 		\only<3>{Why do we cling to this?}
 	}
@@ -227,27 +232,240 @@ end
 \begin{frame}
 	\par{\usebeamercolor[fg]{title}\usebeamerfont{title} Teaching Objects}
 	\par\vspace{3cm}
-	\pause {\usebeamerfont{subtitle}Ruby is your computer now}
+	\pause \hfill{\usebeamerfont{subtitle}Ruby is the computer}
 \end{frame}
 
 \begin{frame}[fragile]
-	\begin{rubycode}
-pen = Object.new
-#=> #<Object:0x007ff1c491de90>
+\frametitle{Everything is an Object}
+\begin{rubycode}
+5 #=> 5
+:mania #=> :mania
+42.0 #=> 42.0
+"Hello!" #=> "Hello!"
+true #=> true
+[1, 2, 3] #=> [1, 2, 3]
+\end{rubycode}
+\end{frame}
 
-def pen.inspect
-'A trusty pen'
-end
-#=> nil
+\begin{frame}[fragile]
+\frametitle{Objects Respond to Messages}
+\begin{rubycode}
+"six".send :upcase #=> "SIX"
+5.send :+, 9 #=> 14
+17.send :nil? #=> false
+\end{rubycode}
+\end{frame}
 
-pen
-#=> A trusty pen
-	\end{rubycode}
+\begin{frame}[fragile]
+\frametitle{Objects Have (a) Class}
+\begin{rubycode}
+5.send :class
+#=> Fixnum
+'Kittens'.send :class
+#=> String
+4.0.send :class
+#=> Float
+["he's", "crazy?"].send :class
+#=> Array
+\end{rubycode}
 \end{frame}
 
 \begin{frame}
+	\par{\usebeamercolor[fg]{title}\usebeamerfont{title} Teaching Objects}
+	\par\vspace{3cm}
+	\hfill{\usebeamerfont{subtitle}The pen and the scribe}
 \end{frame}
 
+\begin{frame}[fragile]
+\frametitle{Instantiation}
+\begin{rubycode}
+pen = Object.new
+#=> #<Object:0x007ff1c491de90>
+\end{rubycode}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Method Definition}
+\begin{rubycode}
+def pen.to_s
+"A trusty pen"
+end
+#=> nil
+\end{rubycode}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Message Sending}
+\begin{rubycode}
+pen.send :to_s
+#=> A trusty pen
+\end{rubycode}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{A Pinch of Sugar for Clarity}
+\begin{rubycode}
+def pen.to_s
+"A trusty pen"
+end
+
+pen.to_s
+#=> A trusty pen
+\end{rubycode}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Errors Are Your Friends}
+\begin{rubycode}
+pen.write "Hi there"
+#=> NoMethodError: undefined
+# method `write' for
+# A trusty pen:Object
+\end{rubycode}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Use the \texttt{Kernel}, Luke}
+\begin{rubycode}
+def pen.write thing
+  Kernel.puts thing
+end
+#=> nil
+\end{rubycode}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Write Anything!}
+\begin{rubycode}
+pen.write "Hi"
+Hi
+#=> nil
+
+pen.write pen
+A trusty pen
+#=> nil
+\end{rubycode}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Feature Request: Color}
+\begin{rubycode}
+pen.ink_color = "Blue"
+#=> NoMethodError: undefined
+# method `ink_color=' for
+# A trusty pen:Object
+
+def pen.ink_color= color
+  @ink_color = color
+end
+#=> nil
+\end{rubycode}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Showing Our Colors}
+\begin{rubycode}
+def pen.to_s
+  "A trusty #{@ink_color} pen"
+end
+
+pen.ink_color = "purple"
+#=> "purple"
+
+pen
+#=> "A trusty purple pen"
+\end{rubycode}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Implicit Receivers}
+\begin{rubycode}
+def pen.sparkly_write thing
+  write "*;. #{thing} *;.*"
+end
+
+pen.sparkly_write pen
+*;. A trusty purple pen *;.*
+\end{rubycode}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Conditionals Revisited}
+\begin{rubycode}
+def pen.html_write thing
+  write if @ink_color
+    "<p style=\"color: \
+    #{@ink_color};\">
+      #{thing}
+    </p>"
+  else
+    "<p>#{thing}</p>"
+  end
+end
+\end{rubycode}
+\end{frame}
+
+\begin{frame}
+	\par {\usebeamercolor[fg]{title}\usebeamerfont{title} Teaching Ruby}\par
+	\vspace{3cm}\hfill
+	{\usebeamerfont{subtitle}What have we\\* \hfill introduced?}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Time to get classy\ldots}
+\begin{rubycode}
+Scribe = Class.new do
+  def initialize pen
+    @pen = pen
+    @items = Array.new
+  end
+
+  def note item
+    @items.<< item
+  end
+  # to be continued
+\end{rubycode}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{\ldots{}you blockhead}
+\begin{rubycode}
+  # in the Scribe class body
+  def write_everything
+    @items.each do |item|
+      @pen.write item
+    end
+  end
+end
+#=> Scribe
+\end{rubycode}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Hiring a new scribe}
+\begin{rubycode}
+mielot = Scribe.new pen
+#=> #<Scribe:0x007fe57b086228
+#   @pen=A trusty purple pen>
+mielot.note "Time: #{Time.now}"
+mielot.note "This demo is over"
+mielot.write_everything
+Time: 2012-09-13 01:05:05 -0700
+This demo is over
+\end{rubycode}
+\end{frame}
+
+\begin{frame}
+	\par {\usebeamercolor[fg]{title}\usebeamerfont{title} Teaching Ruby}\par
+	\vspace{3cm}\hfill
+	{\usebeamerfont{title}with Objects}
+\end{frame}
+
+\begin{frame}
+	\par {\usebeamercolor[fg]{title}\usebeamerfont{title} Teaching Objects}\par
+	\vspace{3cm}\hfill
+	{\usebeamerfont{title}with Ruby}
+\end{frame}
 
 \begin{frame}
 	\begin{center}
@@ -263,5 +481,4 @@ pen
 		Pygments / Minted
 	\end{center}
 \end{frame}
-
 \end{document}
